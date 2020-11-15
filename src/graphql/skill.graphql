@@ -1,0 +1,15 @@
+query getSkillList {
+    getSkillList {
+        id
+        name
+    }
+}
+mutation createSkill($input: CreateSkillInput!) {
+    createSkill(input: $input)
+}
+mutation createUserSkill($input: CreateUserSkillInput!) {
+    createUserSkill(input: $input)
+}
+mutation deleteUserSkill($skillId: String!) {
+    deleteUserSkill(skillId: $skillId)
+}

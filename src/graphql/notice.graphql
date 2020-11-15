@@ -1,0 +1,64 @@
+query getNoticeList($first:String,$after:String,$category: NoticeCategory!) {
+    getNoticeList(first:$first, after:$after, category:$category) {
+        edges {
+            cursor
+            node {
+                ...simpleNoticeFields
+                user {
+                    ...simpleUserFields
+                }
+            }
+        }
+        pageInfo {
+            endCursor
+            startCursor
+            hasNextPage
+        }
+    }
+}
+
+query getNotice($noticeId: String!) {
+    getNotice(noticeId: $noticeId) {
+        ...simpleNoticeFields
+    }
+}
+
+mutation createNotice ($input: CreateNoticeInput!) {
+    createNotice(input: $input) {
+        ...simpleNoticeFields
+        user {
+            ...simpleUserFields
+        }
+    }
+}
+
+mutation updateNotice ($input: UpdateNoticeInput!) {
+    updateNotice(input: $input) {
+        ...simpleNoticeFields
+        user {
+            ...simpleUserFields
+        }
+    }
+}
+
+mutation deleteNotice ($noticeId: String!){
+    deleteNotice(noticeId: $noticeId) {
+        ...simpleNoticeFields
+        user {
+            ...simpleUserFields
+        }
+    }
+}
+
+fragment simpleNoticeFields on Notice {
+    id
+    title
+    description
+    thumbnail
+    updatedAt
+    createdAt
+    category
+    user {
+        ...simpleUserFields
+    }
+}

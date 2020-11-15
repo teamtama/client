@@ -1,0 +1,108 @@
+query getBoardList($first:String,$after:String, $category: BoardCategory, $keyword:String) {
+    getBoardList(first:$first, after:$after,category:$category,keyword:$keyword) {
+        edges {
+            cursor
+            node {
+                ...simpleBoardFields
+                likes {
+                    ...boardLikeFields
+                }
+                comments {
+                    ...boardCommentFields
+                }
+
+            }
+        }
+        pageInfo {
+            endCursor
+            hasNextPage
+            startCursor
+        }
+    }
+}
+
+query getBoard($boardId: String!) {
+    getBoard(boardId: $boardId) {
+        ...simpleBoardFields
+        likes {
+            ...boardLikeFields
+        }
+        comments {
+            ...boardCommentFields
+        }
+    }
+}
+
+mutation createBoard($input: CreateBoardInput!) {
+    createBoard(input: $input) {
+        ...simpleBoardFields
+    }
+}
+
+mutation updateBoard($input: UpdateBoardInput!) {
+    updateBoard(input: $input) {
+        ...simpleBoardFields
+    }
+}
+
+mutation deleteBoard($boardId: String!) {
+    deleteBoard(boardId: $boardId)
+}
+
+mutation like($boardId: String!) {
+    like(boardId: $boardId)
+}
+
+mutation unlike($boardId: String!) {
+    unlike(boardId: $boardId)
+}
+
+mutation createBoardComment($input: CreateBoardCommentInput!) {
+    createBoardComment(input: $input) {
+        ...boardCommentFields
+    }
+}
+
+mutation updateBoardComment($input: UpdateBoardCommentInput!) {
+    updateBoardComment(input: $input) {
+        ...boardCommentFields
+    }
+}
+
+fragment simpleBoardFields on Board {
+    id
+    category
+    title
+    description
+    imageUrl
+    thumbnail
+    updatedAt
+    createdAt
+    userId
+    user {
+        ...simpleUserFields
+    }
+}
+
+fragment boardCommentFields on BoardComment {
+    id
+    body
+    createdAt
+    updatedAt
+    userId
+    boardId
+    user {
+        ...simpleUserFields
+    }
+}
+
+fragment boardLikeFields on BoardLike {
+    id
+    createdAt
+    updatedAt
+    userId
+    boardId
+    user {
+        ...simpleUserFields
+    }
+}
