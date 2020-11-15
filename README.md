@@ -54,3 +54,6 @@ $ npm start dev
 }
 
 ```
+
+## JIRA 연동
+테스트
