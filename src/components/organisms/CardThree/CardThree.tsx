@@ -95,8 +95,8 @@ const CardThree: FunctionComponent<Props> = ({
         />
       </TopBox>
       <BottomBox>
-        <BottomBoxDate size={'primary'}>{fromNow(date)}</BottomBoxDate>
-        <BottomBoxTitle size={'large'}>{title}</BottomBoxTitle>
+        <BottomBoxDate>{fromNow(date)}</BottomBoxDate>
+        <BottomBoxTitle>{title}</BottomBoxTitle>
         <BottomBoxSimpleUser username={user.username} avatar={user.avatar} />
       </BottomBox>
     </Wrapper>

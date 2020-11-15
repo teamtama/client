@@ -49,7 +49,6 @@ const CardOne: FunctionComponent<Props> = ({
           css={css`
             font-weight: 800;
           `}
-          size={'medium'}
         >
           {date}
         </Typography>
@@ -74,7 +73,6 @@ const CardOne: FunctionComponent<Props> = ({
               font-weight: 500;
               ${textOverflowMixin({ line: 1 })}
             `}
-            size={'medium'}
           >
             {title}
           </Typography>
@@ -86,7 +84,6 @@ const CardOne: FunctionComponent<Props> = ({
               font-weight: 500;
               ${textOverflowMixin({ line: 2 })}
             `}
-            size={'small'}
           >
             {description}
           </Typography>

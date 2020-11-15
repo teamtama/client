@@ -24,7 +24,7 @@ jobs:
 #          name: Lint
 #          command: npm run lint
       - run:
-          name: Check types
+          name: Build Project
           command: npm run build
 #      - run:
 #          name: Run tests

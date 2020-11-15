@@ -48,7 +48,6 @@ const IconButton: FunctionComponent<Props> = ({
             display: block;
             font-weight: 600;
           `}
-          size={'small'}
         >
           {text}
         </Typography>

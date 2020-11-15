@@ -412,7 +412,7 @@ const ProfileTemplate: FunctionComponent<Props> = ({ currentUser }) => {
           <S.UserCardAvatarBox>
             {uploadImageLoading ? (
               <LoadingComponent
-                size={64}
+                size={48}
                 color={'#000'}
                 loading={uploadImageLoading}
               />
