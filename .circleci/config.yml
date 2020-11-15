@@ -9,7 +9,7 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          command: npm type-check
+          command: yarn type-check
 workflows:
   build-and-test:
     jobs:
