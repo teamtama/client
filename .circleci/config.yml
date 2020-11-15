@@ -7,9 +7,10 @@ jobs:
       name: node/default
     steps:
       - checkout
-      - node/install-packages
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
-          command: yarn type-check
+          command: yarn run type-check
 workflows:
   build-and-test:
     jobs:
