@@ -24,8 +24,8 @@ jobs:
 #          name: Lint
 #          command: npm run lint
       - run:
-          name: Check types
-          command: npm run build
+          name: Codegen
+          command: npm run codegen
 #      - run:
 #          name: Run tests
 #          command: npm run test
