@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@2.0.3
+  node: circleci/node@3.0.0
 
 commands:
   setup-node-and-yarn-install-with-cache:
@@ -23,9 +23,9 @@ jobs:
 #      - run:
 #          name: Lint
 #          command: npm run lint
-      - run:
-          name: Build Project
-          command: npm run build
+#      - run:
+#          name: Build Project
+#          command: npm run build
 #      - run:
 #          name: Run tests
 #          command: npm run test
