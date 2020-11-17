@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import { css, useTheme } from '@emotion/react';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Input from '../../atoms/Input/Input';
 
 interface OwnProps {
   label?: string;
@@ -69,18 +70,7 @@ const BaseInput: FunctionComponent<Props> = ({
           </Typography>
         )}
       </div>
-      <input
-        css={css`
-          padding: ${theme.space}px;
-          border-radius: 4px;
-          outline: none;
-          border: 1px solid
-            ${errorMessage ? theme.alert.error : theme.colors.lightGray};
-          &::placeholder {
-            font-style: italic;
-            font-size: 1.2rem;
-          }
-        `}
+      <Input
         value={value}
         onChange={onChange}
         type={type}
