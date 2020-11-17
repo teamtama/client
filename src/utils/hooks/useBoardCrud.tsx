@@ -106,13 +106,13 @@ const useBoardCrud = ({
   };
 
   useEffect(() => {
-    if (board) {
+    if (isEdit) {
       setValue('category', board?.category ?? '');
       setValue('title', board?.title ?? '');
       setValue('description', board?.description ?? '');
       setValue('thumbnail', board?.thumbnail ?? '');
     }
-  }, [board]);
+  }, [isEdit, board]);
 
   return {
     onSubmit: handleSubmit(onSubmit),

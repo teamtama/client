@@ -4,7 +4,7 @@ import useResizeFileToBlob from '../../../utils/hooks/useResizeFileToBlob';
 import useUploadImage from '../../../utils/hooks/useUploadImage';
 import Typography from '../Typography/Typography';
 import { css, useTheme } from '@emotion/react';
-import ErrorMessageComponent from '../../molecules/ErrorMessageComponent/ErrorMessageComponent';
+import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage';
 import '../../../../node_modules/react-quill/dist/quill.snow.css';
 
 interface OwnProps {
@@ -138,6 +138,8 @@ const Quill: FunctionComponent<Props> = ({
 
   const theme = useTheme();
 
+  console.log(body, 'ErrorMessage');
+
   return (
     <div>
       <div
@@ -193,7 +195,7 @@ const Quill: FunctionComponent<Props> = ({
           placeholder={placeholder}
         />
       </div>
-      {errorMessage && <ErrorMessageComponent text={errorMessage} />}
+      {errorMessage && <ErrorMessage text={errorMessage} />}
     </div>
   );
 };

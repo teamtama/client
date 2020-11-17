@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import { css, useTheme } from '@emotion/react';
-import ErrorMessageComponent from '../ErrorMessageComponent/ErrorMessageComponent';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 
 interface OwnProps {
   label?: string;
@@ -88,7 +88,7 @@ const BaseInput: FunctionComponent<Props> = ({
         accept={accept}
         placeholder={placeholder}
       />
-      {errorMessage && <ErrorMessageComponent text={errorMessage} />}
+      {errorMessage && <ErrorMessage text={errorMessage} />}
     </div>
   );
 };
