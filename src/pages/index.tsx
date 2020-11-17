@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BaseLayout from '../components/templates/BaseLayout/BaseLayout';
 import {
   GetServerSidePropsContext,
@@ -15,6 +15,8 @@ import {
   QueryGetNoticeListArgs,
 } from '../generated/graphql';
 import EventList from '../components/organisms/EventList/EventList';
+import Input from '../components/atoms/Input/Input';
+import Button from '../components/atoms/Button/Button';
 
 export const getServerSideProps = async ({
   req,
@@ -50,9 +52,19 @@ export const getServerSideProps = async ({
 type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 
 const Index: NextPage<Props> = () => {
+  const inputRef = React.useRef<HTMLInputElement>(null);
+  const secondInputRef = React.useRef<HTMLInputElement>(null);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    secondInputRef?.current?.focus();
+  }, []);
+
   return (
     <BaseLayout hasNavigator>
-      <EventList />
+      <Input ref={inputRef} disabled/>
+      <Input ref={secondInputRef} />
+      <Button ref={buttonRef}>Click me!</Button>
     </BaseLayout>
   );
 };

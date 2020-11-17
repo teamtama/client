@@ -26,5 +26,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     'react/prop-types': 'off',
+    'react/display-name': 'off'
   },
 };
