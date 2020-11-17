@@ -213,5 +213,4 @@ const Quill: FunctionComponent<Props> = ({
     </div>
   );
 };
-
 export default Quill;
