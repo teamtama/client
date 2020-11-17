@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  jira: circleci/jira@1.0.5
   node: circleci/node@2.0.3
 
 commands:
@@ -29,6 +30,7 @@ jobs:
 #      - run:
 #          name: Run tests
 #          command: npm run test
+      - jira/notify
 
 workflows:
   run-ci:
