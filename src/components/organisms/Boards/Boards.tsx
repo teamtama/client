@@ -9,11 +9,11 @@ import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { searchSchema, SearchSchemaType } from '../../molecules/Search/schema';
-import BoardSearchComponent from '../BoardSearchComponent/BoardSearchComponent';
 import CardFour from '../CardFour/CardFour';
 import { cleanDate } from '../../../utils/helpers/dateHelpers';
 import { mq } from '../../../utils/helpers/mq';
-import { css } from "@emotion/react";
+import { css } from '@emotion/react';
+import BoardSearch from '../BoardSearch/BoardSearch';
 
 const initialKeyword = '';
 
@@ -86,7 +86,7 @@ const Boards: FunctionComponent<Props> = ({}) => {
           `};
       `}
     >
-      <BoardSearchComponent
+      <BoardSearch
         handleSubmit={handleSubmit}
         onSubmit={onSubmit}
         control={control}

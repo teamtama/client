@@ -11,7 +11,7 @@ const defaultVariantMapping = {
   body2: 'p',
   body3: 'p',
   body4: 'p',
-  small: 'p'
+  small: 'p',
 } as const;
 
 interface OwnProps {

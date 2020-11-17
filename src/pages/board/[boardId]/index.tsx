@@ -23,9 +23,9 @@ import {
   NextPage,
 } from 'next';
 import { createApolloClient } from '../../../lib/client';
-import LikeComponent from '../../../components/molecules/LikeComponent/LikeComponent';
-import CommentFormComponent from '../../../components/organisms/CommentFormComponent/CommentFormComponent';
-import CommentsComponent from '../../../components/organisms/CommentsComponent/CommentsComponent';
+import LikeButton from '../../../components/molecules/LikeButton/LikeButton';
+import CommentForm from '../../../components/organisms/CommentForm/CommentForm';
+import Comments from '../../../components/organisms/Comments/Comments';
 import GridLayout from '../../../components/templates/GridLayout/GridLayout';
 
 export const getServerSideProps = async ({
@@ -239,16 +239,16 @@ const BoardDetail: NextPage<Props> = ({ data }) => {
           hasPageInfo
         />
         {data.isLoggedIn && !isAuthor && (
-          <LikeComponent
+          <LikeButton
             isLiked={isLiked}
             onClickLike={onClickLike}
             onClickUnlike={onClickUnlike}
           />
         )}
         {data.isLoggedIn && (
-          <CommentFormComponent createFunction={createBoardComment} />
+          <CommentForm createFunction={createBoardComment} />
         )}
-        <CommentsComponent
+        <Comments
           comments={boardData.getBoard.comments as BoardComment[]}
         />
       </GridLayout>

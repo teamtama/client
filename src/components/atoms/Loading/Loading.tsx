@@ -1,26 +1,31 @@
 import React, { FunctionComponent } from 'react';
-import { BarLoader } from 'react-spinners';
-import { css, useTheme } from '@emotion/react';
+import { ClipLoader } from 'react-spinners';
+import { css } from "@emotion/react";
 
 interface OwnProps {
+  size: number;
+  color: string;
   loading: boolean;
 }
 
 type Props = OwnProps;
 
-const Loading: FunctionComponent<Props> = ({ loading }) => {
-  const theme = useTheme();
+const Loading: FunctionComponent<Props> = ({
+  size,
+  color,
+  loading,
+}) => {
   return (
     <div
       css={css`
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: ${size}px;
+        height: ${size}px;
       `}
     >
-      <BarLoader color={theme.colors.yellow} loading={loading} />
+      <ClipLoader size={size / 2} color={color} loading={loading} />
     </div>
   );
 };

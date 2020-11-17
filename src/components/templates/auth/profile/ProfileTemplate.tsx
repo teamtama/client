@@ -24,7 +24,7 @@ import { useAlert } from '../../../../utils/contexts/AlertContext';
 import { useRouter } from 'next/router';
 import useResizeFileToBlob from '../../../../utils/hooks/useResizeFileToBlob';
 import useUploadImage from '../../../../utils/hooks/useUploadImage';
-import LoadingComponent from '../../../atoms/LoadingComponent/LoadingComponent';
+import Loading from '../../../atoms/Loading/Loading';
 
 interface OwnProps {
   currentUser: SimpleUserFieldsFragment | undefined;
@@ -411,7 +411,7 @@ const ProfileTemplate: FunctionComponent<Props> = ({ currentUser }) => {
         <S.UserCardTop>
           <S.UserCardAvatarBox>
             {uploadImageLoading ? (
-              <LoadingComponent
+              <Loading
                 size={48}
                 color={'#000'}
                 loading={uploadImageLoading}
