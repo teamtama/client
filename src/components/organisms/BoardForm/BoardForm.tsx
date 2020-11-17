@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Controller } from 'react-hook-form';
 import BaseInput from '../../molecules/BaseInput/BaseInput';
 import Quill from '../../atoms/Quill/Quill';
@@ -7,7 +7,6 @@ import BaseSelect, {
   SelectOption,
 } from '../../molecules/BaseSelect/BaseSelect';
 import { BoardCategory } from '../../../generated/graphql';
-import ThumbnailInput from '../../molecules/ThumbnailInput/ThumbnailInput';
 import useBoardCrud from '../../../utils/hooks/useBoardCrud';
 import { css, useTheme } from '@emotion/react';
 
@@ -90,11 +89,11 @@ const BoardForm: FunctionComponent<Props> = ({
       <Controller
         control={control}
         name={'description'}
-        render={({ onChange, value }) => (
+        render={({ onChange }) => (
           <Quill
             label={'Description'}
             required
-            body={value}
+            body={board.description}
             onChange={onChange}
             placeholder={'본문을 입력해주세요. '}
             errorMessage={errors.description?.message}
@@ -107,7 +106,7 @@ const BoardForm: FunctionComponent<Props> = ({
           justify-content: center;
         `}
       >
-        <Button type={'submit'}>{isEdit ? 'Edit' : 'Create'}</Button>
+        <Button>{isEdit ? 'Edit' : 'Create'}</Button>
       </div>
     </form>
   );

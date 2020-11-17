@@ -646,16 +646,19 @@ export const globalStyles = (
   <Global
     styles={css`
       ${emotionReset}
-      html, body {
+      ${swiperStyle}
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
         font-family: Open-Sans, Helvetica, Sans-Serif;
         font-size: 62.5%;
-        box-sizing: border-box;
-        a {
-          text-decoration: none;
-          color: inherit;
-        }
       }
-      ${swiperStyle}
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
     `}
   />
 );

@@ -12,7 +12,6 @@ import {
   useUpdateBoardMutation,
 } from '../../generated/graphql';
 
-
 export type SchemaType = {
   category: BoardCategory;
   title: string;
@@ -106,11 +105,11 @@ const useBoardCrud = ({
   };
 
   useEffect(() => {
-    if (isEdit) {
-      setValue('category', board?.category ?? '');
-      setValue('title', board?.title ?? '');
-      setValue('description', board?.description ?? '');
-      setValue('thumbnail', board?.thumbnail ?? '');
+    if (isEdit && board) {
+      setValue('category', board.category);
+      setValue('title', board.title);
+      setValue('description', board.description);
+      setValue('thumbnail', board.thumbnail);
     }
   }, [isEdit, board]);
 

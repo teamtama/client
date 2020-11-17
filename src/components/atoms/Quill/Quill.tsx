@@ -5,7 +5,7 @@ import useUploadImage from '../../../utils/hooks/useUploadImage';
 import Typography from '../Typography/Typography';
 import { css, useTheme } from '@emotion/react';
 import ErrorMessage from '../../molecules/ErrorMessage/ErrorMessage';
-import '../../../../node_modules/react-quill/dist/quill.snow.css';
+import Editor, { ReactQuillProps } from 'react-quill';
 
 interface OwnProps {
   body: string;
@@ -14,17 +14,22 @@ interface OwnProps {
   errorMessage?: string;
   label: string;
   required?: boolean;
+  readOnly?: boolean;
 }
 
 type Props = OwnProps;
 
-const ReactQuill = dynamic(
+export interface EditorWithForwardedProps extends ReactQuillProps {
+  forwardedRef?: React.MutableRefObject<Editor>;
+}
+
+const ReactQuill = dynamic<EditorWithForwardedProps>(
   async () => {
     const { default: RQ } = await import('react-quill');
-
-    return ({ forwardedRef, ...props }: any) => (
-      <RQ ref={forwardedRef} {...props} />
-    );
+    return ({ forwardedRef, ...props }: any) => {
+      console.log(props, 'ReactQuill');
+      return <RQ ref={forwardedRef} {...props} />;
+    };
   },
   {
     ssr: false,
@@ -38,6 +43,7 @@ const Quill: FunctionComponent<Props> = ({
   errorMessage,
   label,
   required = false,
+  readOnly = false,
 }) => {
   const { resizeFileToBlob } = useResizeFileToBlob();
   const { uploadImage } = useUploadImage();
@@ -81,6 +87,7 @@ const Quill: FunctionComponent<Props> = ({
     'header',
     'font',
     'size',
+    'color',
     'bold',
     'italic',
     'underline',
@@ -103,12 +110,18 @@ const Quill: FunctionComponent<Props> = ({
             { header: [3, 4, 5, 6] },
             { font: [] },
           ],
-          [{ size: [] }],
           ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-          [{ list: 'ordered' }, { list: 'bullet' }],
+          [{ size: ['small', false, 'large', 'huge'] }, { color: [] }],
+          [
+            { list: 'ordered' },
+            { list: 'bullet' },
+            { indent: '-1' },
+            { indent: '+1' },
+            { align: [] },
+          ],
+          ['code-block'],
           ['link', 'image', 'video'],
           ['clean'],
-          ['code-block'],
         ],
         handlers: {
           image: selectLocalImage,
@@ -178,7 +191,7 @@ const Quill: FunctionComponent<Props> = ({
           border: 1px solid
             ${errorMessage ? theme.alert.error : theme.colors.lightGray};
           .ql-editor {
-            height: 320px;
+            height: 400px;
           }
           .ql-snow {
             border: none;
@@ -193,6 +206,7 @@ const Quill: FunctionComponent<Props> = ({
           modules={QuillModules}
           formats={QuillFormats}
           placeholder={placeholder}
+          readOnly={readOnly}
         />
       </div>
       {errorMessage && <ErrorMessage text={errorMessage} />}
