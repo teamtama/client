@@ -9,7 +9,7 @@ import BaseDescription from '../../molecules/BaseDescription/BaseDescription';
 import MoreAction from '../../molecules/MoreAction/MoreAction';
 import { css } from '@emotion/react';
 
-export type MoreAction = {
+export type MoreActionType = {
   label: string;
   onClick: any;
   color?: string;
@@ -22,7 +22,7 @@ interface OwnProps {
   user: SimpleUserFieldsFragment;
   likeCount?: number;
   commentCount?: number;
-  moreActions?: MoreAction[];
+  moreActions?: MoreActionType[];
   isAuthor?: boolean;
   hasPageInfo?: boolean;
 }
@@ -65,12 +65,9 @@ const BaseDetail: FunctionComponent<Props> = ({
         )}
       </div>
       {hasPageInfo && (
-        <DetailPageInfo
-          likeCount={likeCount}
-          commentCount={commentCount}
-        />
+        <DetailPageInfo likeCount={likeCount} commentCount={commentCount} />
       )}
-      <BaseDescription>{parse(description)}</BaseDescription>
+      <BaseDescription text={description} />
     </div>
   );
 };

@@ -1,16 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import { MoreAction } from '../../organisms/BaseDetail/BaseDetail';
+import { MoreActionType } from '../../organisms/BaseDetail/BaseDetail';
 import { MdMoreHoriz } from 'react-icons/md';
 import { css, useTheme } from '@emotion/react';
 
 interface OwnProps {
   isAuthor: boolean;
-  moreActions?: MoreAction[];
+  moreActions?: MoreActionType[];
 }
 
 type Props = OwnProps;
 
-const MoreActionComponent: FunctionComponent<Props> = ({
+const MoreAction: FunctionComponent<Props> = ({
   isAuthor = false,
   moreActions,
 }) => {
@@ -33,7 +33,7 @@ const MoreActionComponent: FunctionComponent<Props> = ({
             transition: all 400ms ease-out;
             cursor: pointer;
             padding: ${theme.space / 2}px;
-            font-size: 18px;
+            font-size: 24px;
             &:hover {
               background-color: ${theme.colors.lightGray};
             }
@@ -80,4 +80,4 @@ const MoreActionComponent: FunctionComponent<Props> = ({
   );
 };
 
-export default MoreActionComponent;
+export default MoreAction;

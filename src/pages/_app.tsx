@@ -14,6 +14,8 @@ import { AppContext, AppInitialProps, AppProps } from 'next/app';
 import { globalStyles } from '../style';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from '../style';
+import '../../node_modules/react-quill/dist/quill.snow.css';
+
 
 const Background = styled.div`
   position: absolute;

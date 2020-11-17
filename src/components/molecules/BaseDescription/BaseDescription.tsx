@@ -1,24 +1,27 @@
 import React, { FunctionComponent } from 'react';
+import QuillReadOnly from '../../atoms/Quill/QuillReadOnly';
 import { css } from '@emotion/react';
 
-interface OwnProps {}
+interface OwnProps {
+  text: string;
+}
 
 type Props = OwnProps;
 
-const BaseDescription: FunctionComponent<Props> = ({ children }) => {
+const BaseDescription: FunctionComponent<Props> = ({ text }) => {
   return (
     <div
       css={css`
-        word-wrap: break-word;
-        img {
-          max-width: 100%;
+        .ql-container.ql-snow {
+          border: none;
         }
-        * {
-          all: revert;
+        .ql-editor {
+          padding: 0;
+          margin: 0;
         }
       `}
     >
-      {children}
+      <QuillReadOnly body={text} />
     </div>
   );
 };
