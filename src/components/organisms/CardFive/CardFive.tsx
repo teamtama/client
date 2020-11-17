@@ -5,7 +5,7 @@ import { UrlObject } from 'url';
 import { checkFromNow } from '../../../utils/helpers/dateHelpers';
 import { css, useTheme } from '@emotion/react';
 import Typography from '../../atoms/Typography/Typography';
-import TagComponent from '../../molecules/TagComponent/TagComponent';
+import Tag from "../../molecules/Tag/Tag";
 
 interface OwnProps {
   thumbnail?: string | null;
@@ -71,7 +71,7 @@ const CardFive: FunctionComponent<Props> = ({
         <Link href={href}>
           <a>
             {checkFromNow({ date, howLong: 1, unit: 'month' }) && (
-              <TagComponent
+              <Tag
                 bgColor={theme.colors.red}
                 color={theme.colors.white}
                 text={'new'}

@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import Link from 'next/link';
 import { textOverflowMixin } from '../../../style';
-import UserInfoComponent from '../UserInfoComponent/UserInfoComponent';
+import UserInfo from '../UserInfo/UserInfo';
 import { BoardCategory } from '../../../generated/graphql';
 import { css, useTheme } from '@emotion/react';
 import styled from '@emotion/styled';
 import Typography from '../../atoms/Typography/Typography';
-import TagComponent from '../../molecules/TagComponent/TagComponent';
+import Tag from '../../molecules/Tag/Tag';
 
 function Wrapper(props: any) {
   const theme = useTheme();
@@ -90,7 +90,7 @@ function RightTitle(props: any) {
   );
 }
 
-const RightUserWrapper = styled(UserInfoComponent)`
+const RightUserWrapper = styled(UserInfo)`
   justify-content: flex-end;
 `;
 
@@ -134,7 +134,7 @@ const CardFour: FunctionComponent<Props> = ({
           <Link href={href}>
             <a>
               <Typography variant={'h4'}>{title}</Typography>
-              <TagComponent
+              <Tag
                 bgColor={'#e1ecf4'}
                 color={'#39739d'}
                 text={category}

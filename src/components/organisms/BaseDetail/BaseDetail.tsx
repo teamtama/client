@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import parse from 'html-react-parser';
 import { SimpleUserFieldsFragment } from '../../../generated/graphql';
-import UserInfoComponent from '../UserInfoComponent/UserInfoComponent';
+import UserInfo from '../UserInfo/UserInfo';
 import dayjs from 'dayjs';
-import BaseTitleComponent from '../../molecules/BaseTitleComponent/BaseTitleComponent';
-import DetailPageInfoComponent from '../DetailPageInfoComponent/DetailPageInfoComponent';
-import BaseDescriptionComponent from '../../molecules/BaseDescriptionComponent/BaseDescriptionComponent';
-import MoreActionComponent from '../../molecules/MoreActionComponent/MoreActionComponent';
+import BaseTitle from '../../molecules/BaseTitle/BaseTitle';
+import DetailPageInfo from '../DetailPageInfo/DetailPageInfo';
+import BaseDescription from '../../molecules/BaseDescription/BaseDescription';
+import MoreAction from '../../molecules/MoreAction/MoreAction';
 import { css } from '@emotion/react';
 
 export type MoreAction = {
@@ -48,29 +48,29 @@ const BaseDetail: FunctionComponent<Props> = ({
         margin: 32px 0;
       `}
     >
-      <BaseTitleComponent>{title}</BaseTitleComponent>
+      <BaseTitle>{title}</BaseTitle>
       <div
         css={css`
           display: flex;
         `}
       >
-        <UserInfoComponent
+        <UserInfo
           createdAt={dayjs(createdAt).format('YYYY. MM. DD  hh:mm:ss')}
           avatar={user.avatar}
           username={user.username}
           introduce={user.email}
         />
         {moreActions && isAuthor && (
-          <MoreActionComponent isAuthor={isAuthor} moreActions={moreActions} />
+          <MoreAction isAuthor={isAuthor} moreActions={moreActions} />
         )}
       </div>
       {hasPageInfo && (
-        <DetailPageInfoComponent
+        <DetailPageInfo
           likeCount={likeCount}
           commentCount={commentCount}
         />
       )}
-      <BaseDescriptionComponent>{parse(description)}</BaseDescriptionComponent>
+      <BaseDescription>{parse(description)}</BaseDescription>
     </div>
   );
 };

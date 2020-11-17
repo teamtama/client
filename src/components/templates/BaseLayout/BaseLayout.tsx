@@ -3,11 +3,11 @@ import { CSSTransition } from 'react-transition-group';
 import Backdrop from '../../molecules/Backdrop/Backdrop';
 import Drawer from '../../molecules/Drawer/Drawer';
 import Header from '../../organisms/Header/Header';
-import Loading from '../../atoms/Loading/Loading';
 import { useAuth } from '../../../utils/contexts/AuthContext';
 import GlobalNavigator from '../../organisms/GlobalNavigator/GlobalNavigator';
 import { mq } from '../../../utils/helpers/mq';
 import { css } from '@emotion/react';
+import Loading from '../../atoms/Loading/Loading';
 
 interface OwnProps {
   pageName?: string;
@@ -89,7 +89,7 @@ const BaseLayout: FunctionComponent<Props> = ({
             background-color: rgba(255, 255, 255, 0.6);
           `}
         >
-          <Loading loading={loading} />
+          <Loading size={20} color={'black'} loading={loading} />
         </div>
       )}
       <Header

@@ -14,7 +14,7 @@ import {
   NoticeCategory,
   QueryGetNoticeListArgs,
 } from '../generated/graphql';
-import EventListComponent from '../components/organisms/EventListComponent/EventListComponent';
+import EventList from '../components/organisms/EventList/EventList';
 
 export const getServerSideProps = async ({
   req,
@@ -52,7 +52,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>;
 const Index: NextPage<Props> = () => {
   return (
     <BaseLayout hasNavigator>
-      <EventListComponent />
+      <EventList />
     </BaseLayout>
   );
 };

@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { fromNow } from '../../../utils/helpers/dateHelpers';
 import Typography from '../../atoms/Typography/Typography';
-import RadiusBox from '../../atoms/RadiusBox/RadiusBox';
 import { css, useTheme } from '@emotion/react';
 
 interface OwnProps {}
@@ -9,7 +8,7 @@ interface OwnProps {}
 type Props = OwnProps;
 
 const ImageCardOne: FunctionComponent<Props> = () => {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <div
       css={css`
@@ -68,7 +67,7 @@ const ImageCardOne: FunctionComponent<Props> = () => {
         >
           Tokyo, JP
         </Typography>
-        <RadiusBox text={fromNow(new Date())} />
+        <div>{fromNow(new Date())}</div>
       </div>
     </div>
   );

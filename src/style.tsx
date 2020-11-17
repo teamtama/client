@@ -28,6 +28,24 @@ export const theme = {
     header: 48,
     navigator: 48,
   },
+  button: {
+    primary: {
+      backgroundColor: '#2F52E0',
+      color: '#FFFFFF',
+    },
+    success: {
+      backgroundColor: '#00B900',
+      color: '#FFFFFF',
+    },
+    warning: {
+      backgroundColor: '#ffc41e',
+      color: '#FFFFFF',
+    },
+    error: {
+      backgroundColor: '#E3170A',
+      color: '#FFFFFF',
+    },
+  },
   font: {
     fontFamily: `-apple-system`,
     margin: 0,
