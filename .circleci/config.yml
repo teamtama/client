@@ -25,11 +25,8 @@ jobs:
 #          name: Lint
 #          command: npm run lint
       - run:
-          name: Codegen
-          command: npm run codegen
-#      - run:
-#          name: Run tests
-#          command: npm run test
+          name: Run tests
+          command: npm run test
 workflows:
   run-ci:
     jobs:
