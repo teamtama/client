@@ -659,6 +659,24 @@ export const globalStyles = (
         text-decoration: none;
         color: inherit;
       }
+      .portal-enter {
+        opacity: 0;
+        //transform: translate(-50%, 0);
+      }
+      .portal-enter-active {
+        opacity: 1;
+        //transform: translate(-50%, -50%);
+        transition: all 200ms;
+      }
+      .portal-exit {
+        opacity: 1;
+        //transform: translate(-50%, -50%);
+      }
+      .portal-exit-active {
+        opacity: 0;
+        //transform: translate(-50%, 0);
+        transition: all 200ms;
+      }
     `}
   />
 );
