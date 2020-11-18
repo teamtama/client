@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import BaseLayout from '../components/templates/BaseLayout/BaseLayout';
 import {
   GetServerSidePropsContext,
@@ -14,9 +14,15 @@ import {
   NoticeCategory,
   QueryGetNoticeListArgs,
 } from '../generated/graphql';
-import EventList from '../components/organisms/EventList/EventList';
 import Input from '../components/atoms/Input/Input';
 import Button from '../components/atoms/Button/Button';
+import ModalWrapper, {
+  IModalWrapperHandler,
+} from '../components/atoms/ModalWrapper/ModalWrapper';
+import { css } from '@emotion/react';
+import ModalPortal, {
+  IModalPortalHandler,
+} from '../components/atoms/ModalPortal/ModalPortal';
 
 export const getServerSideProps = async ({
   req,
@@ -55,16 +61,51 @@ const Index: NextPage<Props> = () => {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const secondInputRef = React.useRef<HTMLInputElement>(null);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
-
-  useEffect(() => {
-    secondInputRef?.current?.focus();
-  }, []);
-
+  const buttonPortalRef = React.useRef<HTMLButtonElement>(null);
+  const modalWrapperRef = React.useRef<IModalWrapperHandler>(null);
+  const modalPortalRef = React.useRef<IModalPortalHandler>(null);
   return (
     <BaseLayout hasNavigator>
-      <Input ref={inputRef} disabled/>
+      <Input ref={inputRef} />
       <Input ref={secondInputRef} />
-      <Button ref={buttonRef}>Click me!</Button>
+      <Button
+        ref={buttonRef}
+        onClick={() => modalWrapperRef?.current?.handleToggle()}
+      >
+        Click me!
+      </Button>
+      <ModalWrapper ref={modalWrapperRef}>
+        <div
+          css={css`
+            background-color: red;
+            width: 480px;
+            height: 300px;
+          `}
+        >
+          213214
+          <Button
+            ref={buttonRef}
+            onClick={() => modalWrapperRef?.current?.handleToggle()}
+          >
+            Click me!
+          </Button>
+        </div>
+      </ModalWrapper>
+      <Button
+        ref={buttonPortalRef}
+        onClick={() => modalPortalRef?.current?.handleToggle()}
+      >
+        Click me!
+      </Button>
+      <ModalPortal ref={modalPortalRef}>
+        <div>MODAL!</div>
+        <Button
+          ref={buttonPortalRef}
+          onClick={() => modalPortalRef?.current?.handleToggle()}
+        >
+          Click me!
+        </Button>
+      </ModalPortal>
     </BaseLayout>
   );
 };

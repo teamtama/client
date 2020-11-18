@@ -3,12 +3,11 @@ import { Controller } from 'react-hook-form';
 import BaseInput from '../../molecules/BaseInput/BaseInput';
 import Quill from '../../atoms/Quill/Quill';
 import Button from '../../atoms/Button/Button';
-import BaseSelect, {
-  SelectOption,
-} from '../../molecules/BaseSelect/BaseSelect';
+import BaseSelect from '../../molecules/BaseSelect/BaseSelect';
 import { BoardCategory } from '../../../generated/graphql';
 import useBoardCrud from '../../../utils/hooks/useBoardCrud';
 import { css, useTheme } from '@emotion/react';
+import { SelectOption } from "../../atoms/Select/Select";
 
 const categoryOptions: SelectOption[] = [
   {
@@ -89,11 +88,11 @@ const BoardForm: FunctionComponent<Props> = ({
       <Controller
         control={control}
         name={'description'}
-        render={({ onChange }) => (
+        render={({ onChange, value }) => (
           <Quill
             label={'Description'}
             required
-            body={board.description}
+            body={board?.description ?? value}
             onChange={onChange}
             placeholder={'본문을 입력해주세요. '}
             errorMessage={errors.description?.message}

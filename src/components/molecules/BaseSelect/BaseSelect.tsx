@@ -2,11 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Typography from '../../atoms/Typography/Typography';
 import { AiFillAlert } from 'react-icons/ai';
 import { css, useTheme } from '@emotion/react';
-
-export type SelectOption = {
-  value: any;
-  label: string;
-};
+import Select, { SelectOption } from '../../atoms/Select/Select';
 
 interface OwnProps {
   label: string;
@@ -66,29 +62,13 @@ const BaseSelect: FunctionComponent<Props> = ({
           </Typography>
         )}
       </div>
-      <select
-        css={css`
-          padding: ${theme.space}px;
-          border-radius: 4px;
-          outline: none;
-          border: 1px solid
-            ${errorMessage ? theme.alert.error : theme.colors.lightGray};
-          &::placeholder {
-            font-style: italic;
-            font-size: 1.2rem;
-          }
-        `}
+      <Select
         value={value}
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
-      >
-        {options.map((op) => (
-          <option key={op.label} value={op.value}>
-            {op.label}
-          </option>
-        ))}
-      </select>
+        options={options}
+      />
       {errorMessage && (
         <div
           css={css`
